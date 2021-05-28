@@ -1,0 +1,42 @@
+/* SideBar */
+.sidebarContainer h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+.linkHeading {
+  font-size: 23px;
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+}
+.ShopPage_SideBar {
+  /* min-height: 100vh; */
+  /* width: 250px; */
+  flex: 1 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 50px;
+}
+.linksContainer {
+  margin-top: 5rem;
+}
+.UL_links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+.UL_links a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0.3rem 0;
+  padding: 0.5rem 0;
+}
+.UL_links a:hover {
+  background: blueviolet;
+  transition: 0.3s ease-in-out;
+}

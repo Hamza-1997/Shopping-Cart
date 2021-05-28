@@ -1,0 +1,68 @@
+.headerContainer {
+  background: wheat;
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  align-items: center;
+}
+
+.headerNav {
+  display: flex;
+  position: absolute;
+  right: 80px;
+  /* flex-direction: row; */
+  align-items: center;
+  /* justify-content: flex-end; */
+}
+.headerLogo {
+  margin-left: 2rem;
+}
+.headerNav a {
+  padding: 0.5rem 1rem;
+  margin: 0 1rem;
+}
+/* .parent {
+  transition: 3s ease;
+} */
+.cartParentContainer {
+  position: fixed;
+  transition: 0.5s ease;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8666666666666667);
+  z-index: 9;
+}
+.cartParentContainer.active {
+  opacity: 1;
+}
+
+.cart-container {
+  background: rgb(235, 235, 235);
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 35%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  transition: 0.5s ease-in;
+}
+.cart-container.close {
+  right: -600px;
+}
+.cartContent {
+  margin-top: 5rem;
+}
+.closeBtn {
+  position: relative;
+  right: 0;
+  transform: translateX(50%, -50%);
+  padding: 1rem;
+  cursor: pointer;
+}
+/* https://www.reddit.com/r/RealJilling/ */

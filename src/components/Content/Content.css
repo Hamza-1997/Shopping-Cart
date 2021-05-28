@@ -1,0 +1,97 @@
+.contentContainer {
+  background: rgb(235, 235, 235);
+  /* height: 100vh; */
+  display: flex;
+  padding: 3rem 4rem;
+}
+
+/* main  */
+.main_ShopPage {
+  flex: 5 1;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  /* margin-right: -2rem; */
+  /* border: 1px solid black; */
+}
+
+.ProductsListUL {
+  list-style: none;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* overflow: hidden; */
+  flex-wrap: wrap;
+}
+.Products_ListItems {
+  list-style: none;
+  flex-direction: column;
+  margin: 0 50px 100px 0;
+  /* width: max(18.229vw, 300px); */
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.Products_ListItems a {
+  text-decoration: none;
+  color: black;
+}
+.productImage {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.productImage img {
+  float: left;
+  /* width: 250px;
+  height: 250px; */
+  object-fit: cover;
+}
+.frontImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  object-fit: cover;
+  transition: all 0.2s cubic-bezier(0.61, 1, 0.88, 1),
+    transform 0.4s cubic-bezier(0.61, 1, 0.88, 1);
+}
+.frontImage:hover {
+  transform: scale(1.3);
+}
+/* //refactor below  */
+
+.cardImage {
+  /* background: url('./img.jpg'); */
+  position: relative;
+  width: max(18.229vw, 300px);
+  height: max(18.229vw, 300px);
+  overflow: hidden;
+}
+.shopImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max(18.229vw, 300px);
+  height: max(18.229vw, 300px);
+  transform: scale(1);
+  background: var(--productImage);
+  transition: all 0.2s cubic-bezier(0.61, 1, 0.88, 1),
+    transform 0.4s cubic-bezier(0.61, 1, 0.88, 1);
+}
+
+.productName {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.productPrice {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1px;
+}
