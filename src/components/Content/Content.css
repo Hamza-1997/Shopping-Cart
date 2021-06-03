@@ -24,6 +24,12 @@
   /* overflow: hidden; */
   flex-wrap: wrap;
 }
+.ProductsListUL Link {
+}
+.link_Router {
+  text-decoration: none;
+  color: black;
+}
 .Products_ListItems {
   list-style: none;
   flex-direction: column;

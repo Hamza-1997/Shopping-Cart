@@ -13,61 +13,72 @@ import image11 from '../../assets/cat_foods/11.jpg';
 // Refactor the importing of images here with dynamic importing
 // let listOfImages =[];
 
-const Products = [
+const ProductsList = [
   {
     title: 'Cat Food Special',
     price: '1000 Rs',
+    id: 'nulo-food',
     img: image1,
   },
   {
     title: 'Cat Food Special',
     price: '2000 Rs',
+    id: 'nulo-food-2',
     img: image2,
   },
   {
     title: 'Cat Food Special',
     price: '3000 Rs',
+    id: 'nulo-food-3',
     img: image3,
   },
   {
     title: 'Cat Food Special',
     price: '4000 Rs',
+    id: 'nulo-food-4',
     img: image4,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-5',
     img: image5,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-6',
     img: image6,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-7',
     img: image7,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-8',
     img: image8,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-9',
     img: image9,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-10',
     img: image10,
   },
   {
     title: 'Cat Food Special',
     price: '5000 Rs',
+    id: 'nulo-food-11',
     img: image11,
   },
 ];
-export default Products;
+export default ProductsList;

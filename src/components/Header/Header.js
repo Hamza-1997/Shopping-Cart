@@ -1,9 +1,16 @@
-import './Header.css';
 import React, { useState } from 'react';
-function Header() {
+import './Header.css';
+import Cart from '../Cart/Cart';
+
+export function Header(props) {
   const [isOpened, setIsOpened] = useState(false);
+
+  const handleClick = () => {
+    setIsOpened(!isOpened);
+  };
+
   return (
-    <>
+    <div>
       <header className="headerContainer">
         <div className="headerLogoContainer">
           <a href="#top" className="headerLogo">
@@ -13,28 +20,20 @@ function Header() {
         <nav className="headerNav">
           <a href="#top">Shop</a>
           <a href="#top">Search</a>
-          <a href="#top" onClick={() => setIsOpened(!isOpened)}>
+          {/* onClick={() => setIsOpened(!isOpened)} */}
+          <a href="#top" onClick={() => handleClick()}>
             Cart
           </a>
         </nav>
-        {/* Component for cart */}
       </header>
-      <div className="parent">
-        <div
-          className={
-            isOpened ? 'cartParentContainer active' : 'cartParentContainer'
-          }
-        ></div>
-        <div className={isOpened ? 'cart-container' : 'cart-container close'}>
-          <h3 className="closeBtn" onClick={() => setIsOpened(!isOpened)}>
-            Close
-          </h3>
-          <div className="cartContent">
-            <h1>Your Shopping Bag</h1>
-          </div>
-        </div>
-      </div>
-    </>
+      {/* Passing a reference to handleClick method as a prop 
+        called greetHandler */}
+      {/*Header is Acting as  Parent */}
+      {/* We send function and state defined in Header component to 
+      Cart like this, Because cart is rendering inside Header, 
+      We can exhancge data */}
+      <Cart data={isOpened} openCart={handleClick} />
+    </div>
   );
 }
 
