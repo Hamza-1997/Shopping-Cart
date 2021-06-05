@@ -1,0 +1,128 @@
+.cartParentContainer {
+  position: fixed;
+  transition: 0.5s ease-out;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8666666666666667);
+  z-index: 9;
+}
+.cartParentContainer.active {
+  opacity: 1;
+}
+/* Wrapper for cart  */
+.cart-container {
+  position: fixed;
+  transform: translateX(0px) translateZ(0px);
+  align-items: flex-start;
+  width: 34.33%;
+  cursor: default;
+  background: #ebebeb;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 10;
+  transition: 0.5s ease-out;
+}
+.cartContainerWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  cursor: default;
+}
+.cart-container.close {
+  /* This 100% is used so that it does not left out on zoom out */
+  transform: translateX(100%) translateZ(0px);
+}
+.cartContent {
+  margin: 2.5rem 0;
+  /* width: 15rem; */
+}
+.closeBtn {
+  /* position: relative; */
+  /* right: 0; */
+  /* top: 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  /* height: 10px; */
+  /* transform: translateX(50%, -50%); */
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.cartListImage {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  background: #cccccc;
+}
+.cartListContainer {
+  border: 1px solid purple;
+  display: flex;
+}
+.nameAndPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quantityController {
+  /* border: 1px solid pink; */
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+.cartListInfo {
+  padding: 0 1rem;
+}
+.quantityController button {
+  font-size: 29px;
+  padding: 0 1rem;
+  border: none;
+  cursor: pointer;
+}
+.quantityDisplay {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(163, 163, 163);
+  /* padding: 0.5rem 1rem; */
+}
+.quantityDisplay input {
+  width: 5rem;
+}
+.cartListSubtotal {
+  margin: 2rem 0;
+}
+.checkoutBtn {
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 1.5rem 1.5rem;
+}
+.productName h3 {
+  font-size: 16px;
+  width: 70%;
+  /* padding-top: 0.5rem; */
+  padding: 0.5rem 0;
+}
+.cartItemQuantityDisplay {
+  width: 64px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  border: 1px solid #e6dcd2;
+  background: none;
+  font-size: 0.9rem;
+  font-family: 'Montserrat SemiBold';
+  font-weight: 600;
+}
