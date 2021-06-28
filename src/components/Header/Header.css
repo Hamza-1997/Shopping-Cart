@@ -1,5 +1,6 @@
 .headerContainer {
-  background: wheat;
+  /* background: rgb(201, 218, 55); */
+  background: #358597;
   display: flex;
   width: 100%;
   height: 5rem;
@@ -12,15 +13,54 @@
   right: 80px;
   /* flex-direction: row; */
   align-items: center;
+
   /* justify-content: flex-end; */
 }
 .headerLogo {
   margin-left: 2rem;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
 }
-.headerNav a {
+
+.fa-shopping-cart {
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+}
+.badge {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  top: -10px;
+  right: 10px;
+  background: rgb(73, 73, 73);
+  padding: 3px 7px;
+  border-radius: 50%;
+}
+.badge h3 {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  font-size: 17px;
+}
+.fa-search {
+  font-size: 17px;
+  cursor: pointer;
+}
+.headerNav ul {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  color: white;
+}
+.headerNav li {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
+  color: white;
+  text-decoration: none;
 }
-/* .parent {
-  transition: 3s ease;
-} */

@@ -1,37 +1,54 @@
 import './Content.css';
-// import cardImage from '../../assets/cat_foods/hello.jpg';
+import { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Sidebar from '../Sidebar/sidebar';
-import ProductsList from './ProductsList';
-import { Link } from 'react-router-dom';
+import categories from '../../data/allCategories';
+import ProductLists from './ProductLists';
+import allProducts from '../../data/allProducts';
 
-function Content() {
+function Content(props) {
+  const [productCategory, setProductCategory] = useState('');
+
+  const categoryId = props.match?.params.id;
+  const category = categories.find((category) => category.id === categoryId);
+  //set product category whenever clicked on new one from sidebar
+  //check id from params and filter/find it from allCategories
+  // when found, render only that specific id from allProducts(use find()).
+  useEffect(() => {
+    if (category) {
+      const productFound = allProducts.filter(
+        (product) => product.categoryId === category.id
+      );
+
+      setProductCategory(productFound);
+    }
+  }, [categoryId, category]);
+
   return (
     <div className="contentContainer">
-      <Sidebar />
+      {/* Rendering content in such a way that when user click on 
+      a category from aside bar, it gets into URL, then use that 
+      as params to get all products of that relevant id, for that,
+      use a state to store it. */}
+      <Sidebar category={category} />
       <main className="main_ShopPage">
         <ul className="ProductsListUL">
-          {ProductsList.map((product, index) => {
-            return (
-              <Link
-                key={index}
-                to={`/products/${product.id}`}
-                className="link_Router"
-              >
-                <li className="Products_ListItems">
-                  <div className="productImage">
-                    <img src={product.img} alt="" className="frontImage" />
-                  </div>
-                  <div className="productName">{product.title}</div>
-                  <div className="productPrice"> {product.price}</div>
-                </li>
-              </Link>
-            );
-          })}
+          <Switch>
+            <Route exact path="/">
+              {allProducts &&
+                allProducts.map((product) => (
+                  <ProductLists product={product} />
+                ))}
+            </Route>
+            <Route exact path="/:id">
+              {productCategory &&
+                productCategory.map((product) => (
+                  <ProductLists product={product} />
+                ))}
+            </Route>
+          </Switch>
         </ul>
       </main>
-
-      {/* BreadCrumb */}
-      {/* Cards */}
     </div>
   );
 }

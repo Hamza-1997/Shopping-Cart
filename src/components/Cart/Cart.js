@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
-import '../Cart/Cart.css';
-import ProductList from '../Content/ProductsList';
-function Cart(props) {
-  const [count, setCount] = useState(0);
-  return (
-    <div className="cartWrapper">
-      <div
-        className={
-          props.data ? 'cartParentContainer active' : 'cartParentContainer'
-        }
-      ></div>
+import React from 'react';
+// import '../Cart/Cart.css';
+import Backdrop from '../BackDrop/Backdrop';
+import CartItems from './CartItems';
+import { useHistory } from 'react-router-dom';
 
+function Cart(props) {
+  let history = useHistory();
+
+  //we have the data, now check logic for same title,
+
+  //now we use this id to filter specific cartItem
+  const removeItem = (id) => {
+    props.removeItem(id);
+    // setItemToRemove((prev) => [...prev, ...id]);
+    // we pass id of that item to app.js and filter that item from cart
+  };
+  function handleClick() {
+    props.openCart();
+    history.push('/');
+  }
+
+  return (
+    //   props.updateQuantity(id);
+    <div className="cartWrapper">
+      {props.data && <Backdrop show={props.data} />}
       <div className={props.data ? 'cart-container' : 'cart-container close'}>
         <div className="cartContainerWrapper">
           {/* Child  */}
@@ -18,35 +31,42 @@ function Cart(props) {
             Close
           </button>
           <div className="cartContent">
-            <h1>Your Shopping Bag</h1>
+            {props.cartData.length === 0 ? (
+              <h1>Cart is Empty</h1>
+            ) : (
+              <h1>Your Shopping Bag</h1>
+            )}
           </div>
-          <div className="cartListContainer">
-            <img src={ProductList[1].img} alt="" className="cartListImage" />
-            <div className="cartListInfo">
-              <div className="nameAndPrice">
-                <h2>Processor</h2>
-                <span>$48</span>
-              </div>
-              <span className="productName">
-                <h3>AMD ryzen 7 5800X</h3>
-              </span>
-              <div className="quantityController">
-                <button onClick={() => setCount(count - 1)}>-</button>
-                <div className="quantityDisplay">
-                  <input
-                    // data-value
-                    type="text"
-                    className="cartItemQuantityDisplay"
-                    value={count}
-                    onChange={(e) => setCount(Number(e.target.value))}
-                  />
-                </div>
-                <button onClick={() => setCount(count + 1)}>+</button>
-              </div>
-            </div>
+          {/* {props.cartData.map((product) => {})} */}
+          {/* {props.cartData} */}
+          {/* {props.cartData.map((item) =>
+            console.log('jereerer', item.id === item.id)
+          )} */}
+          {props.cartData.map(
+            (item) => (
+              // itemToRemove !== item.id ? (
+              <CartItems
+                key={item.id}
+                items={item}
+                removeItem={removeItem}
+                updateQuantity={props.updateQuantity}
+              />
+            )
+            // ) : null
+            // console.log('this is props title', item)
+          )}
+          {/* {props.cartData.title.map((prev) => { */}
+          {/* // prev === // })} */}
+          {/* map cart items here by passing product to cart
+          from parent components and give a key also with the 
+          product id which should be unique. */}
+
+          <div className="cartListSubtotal">
+            Price of Subtotal: {props.subTotal}
           </div>
-          <div className="cartListSubtotal">Price of Subtotal</div>
-          <button className="checkoutBtn">Checkout</button>
+          <button className="checkoutBtn" onClick={() => handleClick()}>
+            Checkout
+          </button>
         </div>
       </div>
     </div>

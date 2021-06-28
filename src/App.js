@@ -1,48 +1,111 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Products from './components/Products/Products';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ProductPage from './components/Products/ProductPage';
+import Cart from '../src/components/Cart/Cart';
 function App() {
+  const [showCart, setShowCart] = useState(false);
+  const [activeProduct, setActiveProduct] = useState('');
+  const [cart, setCart] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
+
+  useEffect(() => {
+    subtotal();
+  }, [cart]);
+
+  const openCart = () => {
+    setShowCart(!showCart);
+  };
+
+  const subtotal = () => {
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      const iterativePrice = item.price * item.quantity;
+      totalPrice += iterativePrice;
+    });
+    setSubTotal(totalPrice);
+  };
+
+  const updateQuantity = (id, quantity) => {
+    console.log(id, quantity);
+    // check if qty is < 0, if true call removeItem. will do this later
+    if (quantity == 0) removeItem(id);
+    const product = cart.find((item) => item.id === id);
+    product.quantity = quantity;
+    cart.map((item) => (item.id === id ? product : null));
+    subtotal();
+    // else add item to cart
+  };
+
+  const removeItem = (id) => {
+    console.log('removed', id);
+    //map over cart, get all items then filter id to remove
+    let filterCart = cart.map((prev) => prev).filter((item) => item.id !== id);
+    setCart(filterCart);
+  };
+  const addToCart = async (totalItems) => {
+    setActiveProduct(totalItems);
+    // 1. check if item is already in the cart, if yes call updateQuantity
+    //with the id of that item
+    let sameProduct = cart.filter((item) => item.id === totalItems.id);
+
+    // sameProduct.quantity = quantity;
+    if (sameProduct.length === 1) {
+      cart.map((productInCurrentCart) =>
+        productInCurrentCart.id === sameProduct[0].id
+          ? (productInCurrentCart.quantity =
+              Number(productInCurrentCart.quantity) + 1)
+          : null
+      );
+    } else {
+      const productObject = totalItems;
+      productObject.quantity = 1;
+      await setCart((prev) => [...prev, productObject]);
+    }
+    //this will work when component renders, in first run, component doesnt
+    // render
+    // checkUnique(totalItems);
+    subtotal();
+    setShowCart(!showCart);
+  };
+  //When we get a callback from child component, we use that as
+  // an argument
   return (
-    // remaining tasks
-    // Manage the components here,
-    // 1. add categories list, map over them in sidebar component
-    // 2. When clicked on them, show the relevant categories in Content
-    // 3. When clicked on add to cart button, call the openCart function
-    // and add the relevent product in cart, with price.
-    // 4. Inc and Dec cart .
     <div className="App">
       <Router>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          </ul>
-
-          <hr />
-
-          {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
+          <Header data={showCart} openCart={openCart} cartData={cart} />
           <Switch>
             <Route exact path="/">
-              <Header />
               <Content />
             </Route>
-            <Route path="/products/:id" exact component={Products} />
+            <Route
+              exact
+              path="/:id"
+              render={(props) => <Content {...props} />}
+            />
+            <Route
+              exact
+              path="/products/:id"
+              render={(props) => (
+                <ProductPage data={showCart} addToCart={addToCart} {...props} />
+              )}
+            />
+            <Route exact path="/products">
+              <ProductPage />
+            </Route>
           </Switch>
+          <Cart
+            data={showCart}
+            openCart={openCart}
+            addToCart={addToCart}
+            cartData={cart}
+            removeItem={removeItem}
+            updateQuantity={updateQuantity}
+            subTotal={subTotal}
+          />
         </div>
       </Router>
     </div>

@@ -14,6 +14,8 @@
   /* width: 250px; */
   flex: 1 1;
   min-height: 100vh;
+  width: 100%;
+  /* padding: 0 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -21,7 +23,9 @@
   margin-right: 50px;
 }
 .linksContainer {
-  margin-top: 5rem;
+  margin-top: 3rem;
+  /* border: 1px solid rgb(0, 0, 0); */
+  width: 13vw;
 }
 .UL_links {
   display: flex;
@@ -33,10 +37,11 @@
   color: black;
   font-size: 18px;
   font-weight: 500;
-  margin: 0.3rem 0;
-  padding: 0.5rem 0;
+  margin: 0.6rem 0;
+  padding: 0.2rem 0.2rem;
+  border-radius: 10px;
 }
 .UL_links a:hover {
-  background: blueviolet;
+  background: rgb(184, 179, 179);
   transition: 0.3s ease-in-out;
 }

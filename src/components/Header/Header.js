@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import './Header.css';
-import Cart from '../Cart/Cart';
 
 export function Header(props) {
-  const [isOpened, setIsOpened] = useState(false);
+  let history = useHistory();
 
-  const handleClick = () => {
-    setIsOpened(!isOpened);
-  };
-
+  function handleClick() {
+    history.push('/');
+  }
   return (
     <div>
       <header className="headerContainer">
         <div className="headerLogoContainer">
-          <a href="#top" className="headerLogo">
+          <h3 className="headerLogo" onClick={() => handleClick()}>
             Cat Store
-          </a>
+          </h3>
         </div>
         <nav className="headerNav">
-          <a href="#top">Shop</a>
-          <a href="#top">Search</a>
-          {/* onClick={() => setIsOpened(!isOpened)} */}
-          <a href="#top" onClick={() => handleClick()}>
-            Cart
-          </a>
+          <ul>
+            <li>
+              <i className="fas fa-search"></i>
+            </li>
+            <li onClick={() => props.openCart()}>
+              <i className="fas fa-shopping-cart"></i>
+              {props.cartData.length > 0 && (
+                <div className="badge">
+                  <h3>{props.cartData.length}</h3>
+                </div>
+              )}
+            </li>
+          </ul>
         </nav>
       </header>
-      {/* Passing a reference to handleClick method as a prop 
-        called greetHandler */}
-      {/*Header is Acting as  Parent */}
-      {/* We send function and state defined in Header component to 
-      Cart like this, Because cart is rendering inside Header, 
-      We can exhancge data */}
-      <Cart data={isOpened} openCart={handleClick} />
     </div>
   );
 }

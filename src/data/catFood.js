@@ -1,9 +1,9 @@
-import image1 from '../../assets/cat_foods/1.png';
-import image2 from '../../assets/cat_foods/2.png';
-import image3 from '../../assets/cat_foods/3.png';
-import image4 from '../../assets/cat_foods/4.png';
-import image5 from '../../assets/cat_foods/5.png';
-import image6 from '../../assets/cat_foods/6.png';
+import image1 from '../assets/cat_foods/1.png';
+import image2 from '../assets/cat_foods/2.png';
+import image3 from '../assets/cat_foods/3.png';
+import image4 from '../assets/cat_foods/4.png';
+import image5 from '../assets/cat_foods/5.png';
+import image6 from '../assets/cat_foods/6.png';
 // import image7 from '../../assets/cat_foods/7.jpg';
 // import image8 from '../../assets/cat_foods/8.jpg';
 // import image9 from '../../assets/cat_foods/9.jpg';
@@ -16,44 +16,50 @@ import image6 from '../../assets/cat_foods/6.png';
 //ProductLists would have all categories
 // When user click on cat food , list all from that category
 
-const ProductsList = [
+const catFood = [
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'Purina Cat',
     price: 1000,
     id: 'nulo-food-1',
     img: image1,
   },
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'True Instinct',
     price: 2000,
     id: 'nulo-food-2',
     img: image2,
   },
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'Halo Salmon',
     price: 3000,
     id: 'nulo-food-3',
     img: image3,
   },
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'Pro Plan',
     price: 4000,
     id: 'nulo-food-4',
     img: image4,
   },
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'Halo Chicken',
     price: 5000,
     id: 'nulo-food-5',
     img: image5,
   },
   {
-    category: 'Cat Food Special',
+    category: 'CatFood',
+    categoryId: 'cat-foods',
     title: 'Brit',
     price: 5000,
     id: 'nulo-food-6',
@@ -91,4 +97,4 @@ const ProductsList = [
   //   img: image11,
   // },
 ];
-export default ProductsList;
+export default catFood;
