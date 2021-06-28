@@ -7,7 +7,7 @@ import ProductPage from './components/Products/ProductPage';
 import Cart from '../src/components/Cart/Cart';
 function App() {
   const [showCart, setShowCart] = useState(false);
-  const [activeProduct, setActiveProduct] = useState('');
+  // const [activeProduct, setActiveProduct] = useState('');
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
 
@@ -46,7 +46,7 @@ function App() {
     setCart(filterCart);
   };
   const addToCart = async (totalItems) => {
-    setActiveProduct(totalItems);
+    // setActiveProduct(totalItems);
     // 1. check if item is already in the cart, if yes call updateQuantity
     //with the id of that item
     let sameProduct = cart.filter((item) => item.id === totalItems.id);

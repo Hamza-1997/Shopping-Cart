@@ -14,10 +14,6 @@ function ProductPage(props) {
   };
 
   getName();
-  // calling getProduct in App.js to store the new product
-  useEffect(() => {
-    getProduct(foundedProduct);
-  });
 
   //passing id of product in url to app.js,
   const addToCart = () => {
