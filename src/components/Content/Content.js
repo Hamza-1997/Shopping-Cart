@@ -26,10 +26,6 @@ function Content(props) {
 
   return (
     <div className="contentContainer">
-      {/* Rendering content in such a way that when user click on 
-      a category from aside bar, it gets into URL, then use that 
-      as params to get all products of that relevant id, for that,
-      use a state to store it. */}
       <Sidebar category={category} />
       <main className="main_ShopPage">
         <ul className="ProductsListUL">

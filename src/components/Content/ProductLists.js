@@ -17,7 +17,6 @@ function ProductLists({ product }) {
           <h3>{product.price}</h3>
         </div>
       </div>
-      {/* <button>Add</button> */}
     </li>
   );
 }

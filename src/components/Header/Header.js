@@ -19,9 +19,6 @@ export function Header(props) {
         </div>
         <nav className="headerNav">
           <ul>
-            <li>
-              <i className="fas fa-search"></i>
-            </li>
             <li onClick={() => props.openCart()}>
               <i className="fas fa-shopping-cart"></i>
               {props.cartData.length > 0 && (

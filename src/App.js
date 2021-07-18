@@ -7,7 +7,6 @@ import ProductPage from './components/Products/ProductPage';
 import Cart from '../src/components/Cart/Cart';
 function App() {
   const [showCart, setShowCart] = useState(false);
-  // const [activeProduct, setActiveProduct] = useState('');
   const [cart, setCart] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
 
@@ -29,7 +28,6 @@ function App() {
   };
 
   const updateQuantity = (id, quantity) => {
-    console.log(id, quantity);
     // check if qty is < 0, if true call removeItem. will do this later
     if (quantity == 0) removeItem(id);
     const product = cart.find((item) => item.id === id);
@@ -40,13 +38,11 @@ function App() {
   };
 
   const removeItem = (id) => {
-    console.log('removed', id);
     //map over cart, get all items then filter id to remove
     let filterCart = cart.map((prev) => prev).filter((item) => item.id !== id);
     setCart(filterCart);
   };
   const addToCart = async (totalItems) => {
-    // setActiveProduct(totalItems);
     // 1. check if item is already in the cart, if yes call updateQuantity
     //with the id of that item
     let sameProduct = cart.filter((item) => item.id === totalItems.id);

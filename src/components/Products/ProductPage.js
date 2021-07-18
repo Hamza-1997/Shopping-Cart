@@ -21,45 +21,51 @@ function ProductPage(props) {
   };
 
   return (
-    <div className="wrapper">
-      {imagePopUp && <Backdrop />}
-      <div className="imageContainer">
-        <img src={foundedProduct.img} alt="" className="Image" />
-        <button
-          onClick={() => setImagePopUp(!imagePopUp)}
-          className="viewImgBtn"
-        >
-          View
-        </button>
-        {imagePopUp && (
-          // <div className="zoomImg">
-          <div className="childImgContainer">
-            <button
-              className="closeBigImgBtn"
-              onClick={() => setImagePopUp(!imagePopUp)}
-            >
-              close
-            </button>
-            <img src={foundedProduct.img} alt="" className="bigImage" />
+    <>
+      <div className="wrapper">
+        {imagePopUp && <Backdrop />}
+        <div className="imageContainer">
+          <img src={foundedProduct.img} alt="" className="Image" />
+          <button
+            onClick={() => setImagePopUp(!imagePopUp)}
+            className="viewImgBtn"
+          >
+            View
+          </button>
+          {imagePopUp && (
+            // <div className="zoomImg">
+            <div className="childImgContainer">
+              <button
+                className="closeBigImgBtn"
+                onClick={() => setImagePopUp(!imagePopUp)}
+              >
+                close
+              </button>
+              <img src={foundedProduct.img} alt="" className="bigImage" />
+            </div>
+            // </div>
+          )}
+        </div>
+        <div className="ProdInfoContainer">
+          <div className="productName">
+            <span>{foundedProduct.title}</span>
           </div>
-          // </div>
-        )}
-      </div>
-      <div className="ProdInfoContainer">
-        <div className="productName">
-          <span>{foundedProduct.title}</span>
-          {/* {ProductsList.find((item) => item.id == match.params.id)} */}
+          <div className="productPrice">
+            {' '}
+            <span>Rs</span>
+            {foundedProduct.price}{' '}
+          </div>
+          <div className="btnContainer">
+            <button className="cartBtn" onClick={addToCart}>
+              Add to cart
+            </button>
+            <button className="buyBtn" onClick={addToCart}>
+              Buy it
+            </button>
+          </div>
         </div>
-        <div className="productPrice">
-          {' '}
-          <span>Rs</span>
-          {foundedProduct.price}{' '}
-        </div>
-        <button className="cartBtn" onClick={addToCart}>
-          Add to cart
-        </button>
       </div>
-    </div>
+    </>
   );
 }
 
